@@ -28,5 +28,5 @@ Reklam ile kazanılacaklar:
 	-	Spawn rate 2x. 4x. 8x.
 	-	Idle zendeki mantık: özel buffer. fırlatıyon, çarptığı topları 10x yapıyo.
 
-
+.
 ....
