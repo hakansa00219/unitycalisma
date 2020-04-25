@@ -1,0 +1,32 @@
+
+
+	-	Top'un spawn olduğu noktaya bir şey konulacak. Top bir şeyden spawn olacak. Top fırlatıcı gibi bir şey. 
+	-	En başta manuel basılı tutmak gerekecek. sonradan upgrade ile auto olabilir.
+	-	basılı tutma süresi en baştan fazla. upgrade ile hızlanır.
+	-	her fırlatıcının ayrı upgradeleri olur. sonradan baska fıraltıcılar da gelebilir çünkü.
+	-	Top random force ile 360 derece her yöne gidebilir.
+	-	Topa tıklanıldığında süresi +X saniye.	
+	-	üçgen hedef oluşturma. üçgen ve kareler olmalı. üçgenin açısı random oluşmalı. 90 180 270.
+	-	Level geçme ve kamerayı aşağı yukarı kaydırma özelliği. en alta locked yazma ve orayı açmak için kırılması gerekn block.
+	- 	Top kırdıkça loading bar dolcak. Full dolunca 1 star.
+	
+Upgrades:(Star ile upgrade)
+	-	Ball power(her sektiğinde toptan azalacak): 1 (1.1, 1.2, 1.3, 1.4)
+	-	Ball time: 5sec (6,7,8,...)
+	-	Spawn speed: 20sec
+	-	New Spawner satın alma butonu. Çok pahalı.
+	-	Top size decrease:
+
+Para ile alınacaklar:
+	-	New ball skin. (1.99, 5.99, 19.99 efektli, alevli falan bişeyler)
+	-	
+
+Reklam ile kazanılacaklar:
+	-	5 saniyeliğine cok kucuk top
+	-	T saniyeliğine 2x kazanc. 4x kazanç. 16x kazanç
+	-	T saniyeliğine 2x güç. 4x güç. 16x güç
+	-	Spawn rate 2x. 4x. 8x.
+	-	Idle zendeki mantık: özel buffer. fırlatıyon, çarptığı topları 10x yapıyo.
+
+
+....
