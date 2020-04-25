@@ -10,7 +10,7 @@ public class SquareCreatorCode : MonoBehaviour
 
     private Transform locT;
 
-    private float[] xArr = { -5, -3.5f, -2, -0.5f, 1, 2.5f, 4, 5.5f };
+    private float[] xArr = { -4.5f, -3f, -1.5f, 0 , 1.5f, 3f, 4.5f };
     private float[] yArr = { 0, -1.5f, -3, -4.5f, -6};
     private int squareColCnt;
     private int squareRowCnt;
