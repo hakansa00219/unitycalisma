@@ -62,9 +62,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\NewBehaviourScript.cs" />
-    <Compile Include="Assets\SphereCode.cs" />
-    <Compile Include="Assets\SquareCreatorCode.cs" />
+    <Compile Include="Assets\Codes\BallCode.cs" />
+    <Compile Include="Assets\Codes\BallCreatorCode.cs" />
+    <Compile Include="Assets\Codes\SquareCode.cs" />
+    <Compile Include="Assets\Codes\SquareCreatorCode.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
