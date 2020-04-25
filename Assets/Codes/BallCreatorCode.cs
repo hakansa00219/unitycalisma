@@ -13,7 +13,6 @@ public class BallCreatorCode : MonoBehaviour
 
     private int seconds;
     private float timer;
-    private float mseconds;
 
     List<GameObject> mylist;
     public int idx;
@@ -22,10 +21,7 @@ public class BallCreatorCode : MonoBehaviour
     {
         locT = loc.GetComponent<Transform>();
         mylist = new List<GameObject>();
-        mseconds = 5;
         StartCoroutine(Spawn());
-
-        InvokeRepeating("timedivider", 5, 2);
     }
 
     // Update is called once per frame
@@ -46,14 +42,9 @@ public class BallCreatorCode : MonoBehaviour
             Instantiate(spherePrefab[x / 100], new Vector3(randX, locT.position.y, locT.position.z), Quaternion.identity);
             
             Debug.Log(mylist.Count + ". block created.");
-            yield return new WaitForSeconds(mseconds);
+            yield return new WaitForSeconds(1);
         }
         
-    }
-
-    void timedivider()
-    {
-        mseconds /= 2;
     }
 
 }
