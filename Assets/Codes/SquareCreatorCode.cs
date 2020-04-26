@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class SquareCreatorCode : MonoBehaviour
 {
+    /*Public variables*/
     public GameObject square;
-
     public GameObject[] squarePrefab;
-
+    /*Private variables*/
     private Transform locT;
-
+    /*Columns*/
     private float[] xArr = { -4.5f, -3f, -1.5f, 0 , 1.5f, 3f, 4.5f };
-    private float[] yArr = { 0, -1.5f, -3, -4.5f, -6};
     private int squareColCnt;
+    /*Rows*/
+    private float[] yArr = { 4, 2.5f, 1, -0.5f, -2};
     private int squareRowCnt;
-    private int squarePrefabCnt;
-    // Start is called before the first frame update
+
     void Start()
     {
         squareColCnt = xArr.Length;
@@ -23,35 +23,17 @@ public class SquareCreatorCode : MonoBehaviour
         
         locT = square.GetComponent<Transform>();
 
-        for(int y = 0; y<squareRowCnt; ++y)
-        for (int x = 0; x < squareColCnt; ++x)
+        /*Instantiate blocks*/
+        for (int y = 0; y < squareRowCnt; ++y)
+        {
+            for (int x = 0; x < squareColCnt; ++x)
             {
-                Instantiate(squarePrefab[Random.Range(0, squarePrefab.Length)], new Vector3(xArr[x], yArr[y]+4, locT.position.z), Quaternion.identity);
+                Instantiate(squarePrefab[Random.Range(0, squarePrefab.Length)], new Vector3(xArr[x], yArr[y], locT.position.z), Quaternion.identity);
             }
-
-        //StartCoroutine(Spawn());
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
     }
-    /*
-    IEnumerator Spawn()
-    {
-        while (true)
-        {
-
-            //int x = Random.Range(0, 299);
-            //float randX = Random.Range(-3f, 3f);
-
-            int randx = Random.Range(0, 8);
-
-            Instantiate(squarePrefab, new Vector3(xArr[randx], locT.position.y, locT.position.z), Quaternion.identity);
-
-            //Debug.Log(mylist.Count + ". block created.");
-            yield return new WaitForSeconds(1);
-        }
-
-    }*/
 }

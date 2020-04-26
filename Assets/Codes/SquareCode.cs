@@ -6,12 +6,14 @@ using UnityEngine.UI;
 
 public class SquareCode : MonoBehaviour
 {
+    /*public variables*/
+    //...
+
+    /*private variables*/
     [SerializeField]
     private TextMeshPro _lifeText;
-
-    private int x = 0;
     private int health;
-    // Start is called before the first frame update
+    
     private void Awake()
     {
         _lifeText = gameObject.GetComponentInChildren<TextMeshPro>();
@@ -19,12 +21,10 @@ public class SquareCode : MonoBehaviour
 
     void Start()
     {
-
         health = Random.Range(1, 5);
         _lifeText.text = health.ToString();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (health <= 0)

@@ -4,27 +4,25 @@ using UnityEngine;
 
 public class BallCreatorCode : MonoBehaviour
 {
+    /*public variables*/
     public GameObject loc;
-
     public GameObject[] spherePrefab;
 
+    /*private variables*/
     private Transform locT;
-
-
     private int seconds;
     private float timer;
-
-    List<GameObject> mylist;
-    public int idx;
-    // Start is called before the first frame update
+    private float randomForceMin = -100.0f;
+    private float randomForceMax =  100.0f;
+    private float spawnRate = 2.0f;
+    
     void Start()
     {
         locT = loc.GetComponent<Transform>();
-        mylist = new List<GameObject>();
+        /*Start spawn*/
         StartCoroutine(Spawn());
     }
 
-    // Update is called once per frame
     void Update()
     {
        
@@ -34,15 +32,17 @@ public class BallCreatorCode : MonoBehaviour
     {
         while(true)
         {
-           
+            /*Random prefab*/
             int x = Random.Range(0, 299);
+            /*Random x point*/
             float randX = Random.Range(-3f, 3f);
+            /*Instantiate ball*/
+            GameObject obj = Instantiate(spherePrefab[x / 100], new Vector3(randX, locT.position.y, locT.position.z), Quaternion.identity);
+            /*Spawn with force to random direction*/
+            Vector3 force = new Vector3(Random.Range(randomForceMin, randomForceMax), Random.Range(randomForceMin, randomForceMax), Random.Range(randomForceMin, randomForceMax));
+            obj.GetComponent<Rigidbody>().AddForce(force);
 
-
-            Instantiate(spherePrefab[x / 100], new Vector3(randX, locT.position.y, locT.position.z), Quaternion.identity);
-            
-            Debug.Log(mylist.Count + ". block created.");
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(spawnRate);
         }
         
     }
