@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 9222892764999219275}
   m_Layer: 0
   m_Name: SquarePink
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -329,3 +329,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e778cbc94d457c34bbf43a375a0bf1b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lifeText: {fileID: 9222892763769830783}

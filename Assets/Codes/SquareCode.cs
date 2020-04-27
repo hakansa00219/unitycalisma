@@ -10,24 +10,31 @@ public class SquareCode : MonoBehaviour
     //...
 
     /*private variables*/
+    private GameObject _obstacleContainer;
     [SerializeField]
     private TextMeshPro _lifeText;
-    private int health;
+
+    private int _health;
+
+    private Player _player;
     
     private void Awake()
     {
         _lifeText = gameObject.GetComponentInChildren<TextMeshPro>();
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        _obstacleContainer = GameObject.Find("ObstaclesContainer");
     }
 
     void Start()
     {
-        health = Random.Range(1, 5);
-        _lifeText.text = health.ToString();
+        _health = Random.Range(1, 5);
+        _lifeText.text = _health.ToString();
+        this.transform.parent = _obstacleContainer.transform;
     }
 
     void Update()
     {
-        if (health <= 0)
+        if (_health <= 0)
             Destroy(gameObject, 0.01f);
     }
     
@@ -35,11 +42,16 @@ public class SquareCode : MonoBehaviour
     {
         if (collision.gameObject.tag == "ball")
         {
-            --health;
-            if(health != 0) 
-            _lifeText.text = health.ToString();
-            if (health <= 0)
+            _player.IncreaseMoney();
+            --_health;
+            if(_health != 0)
+            {
+                _lifeText.text = _health.ToString();
+                
+            }
+            if (_health <= 0)
                 _lifeText.text = "1";
+
         }
     }
 
