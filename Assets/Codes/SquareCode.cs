@@ -14,9 +14,10 @@ public class SquareCode : MonoBehaviour
     [SerializeField]
     private TextMeshPro _lifeText;
 
-    private int _health;
+    private float _health;
 
     private Player _player;
+    
     
     private void Awake()
     {
@@ -35,22 +36,34 @@ public class SquareCode : MonoBehaviour
     void Update()
     {
         if (_health <= 0)
+        {
             Destroy(gameObject, 0.01f);
+        }
+        
     }
     
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "ball")
         {
-            _player.IncreaseMoney();
-            --_health;
-            if(_health != 0)
+            
+            BallCode ballScript = collision.gameObject.GetComponent<BallCode>();
+
+            _player.IncreaseMoney(ballScript._power);
+            if (_health > ballScript._power)
+                _health -= ballScript._power;
+            else
+                _health = 0;
+
+            if(_health > 0f && _health < 1f)
             {
-                _lifeText.text = _health.ToString();
-                
+                _lifeText.text = ":(";
             }
-            if (_health <= 0)
-                _lifeText.text = "1";
+            else if(_health == 0f)
+            {
+                // ...
+            }else
+                _lifeText.text = System.Math.Floor(_health).ToString();
 
         }
     }

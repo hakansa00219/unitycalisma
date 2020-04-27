@@ -7,21 +7,15 @@ public class BallCreatorCode : MonoBehaviour
     /*public variables*/
     public GameObject loc;
     public GameObject[] spherePrefab;
-
     public GameObject Image;
-
-
-
 
     /*private variables*/
     private Transform locT;
     private int seconds;
-
     private float timer;
     private float randomForceMin = -100.0f;
     private float randomForceMax =  100.0f;
     private float spawnRate = 2.0f;
-
     private loadingbar _lB;
 
     void Awake()

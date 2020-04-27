@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BallCode : MonoBehaviour
 {
-    [SerializeField]
-    private float _power;
+    
+    public float _power;
     [SerializeField]
     private float _life;
 
@@ -13,7 +13,7 @@ public class BallCode : MonoBehaviour
     void Start()
     {
         this.transform.localScale *= 2;
-        this._power = 1;
+        this._power = 1.7f;
         this._life = 5;
     }
 

@@ -6,24 +6,19 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    private int _money = 0;
+    private float _money = 0;
     [SerializeField]
     private TextMeshProUGUI moneyText;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        moneyText.text = "$ = " + _money;
+        string moneyTextCnv = System.String.Format("{0:0.##}", _money);
+        moneyText.text = "$: " + moneyTextCnv;
     }
 
-    public void IncreaseMoney()
+    public void IncreaseMoney(float delta)
     {
-        _money++;
+        _money += (float)System.Math.Round(delta, 2);
     }
 }
