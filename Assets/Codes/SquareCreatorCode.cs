@@ -28,7 +28,7 @@ public class SquareCreatorCode : MonoBehaviour
         {
             for (int x = 0; x < squareColCnt; ++x)
             {
-                Instantiate(squarePrefab[Random.Range(0, squarePrefab.Length)], new Vector3(xArr[x], yArr[y], locT.position.z), Quaternion.identity);
+                GameObject square = Instantiate(squarePrefab[Random.Range(0, squarePrefab.Length)], new Vector3(xArr[x], yArr[y], locT.position.z), Quaternion.identity);                
             }
         }
     }
