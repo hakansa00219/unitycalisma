@@ -4,17 +4,27 @@ using UnityEngine;
 
 public class BallCode : MonoBehaviour
 {
-    
-    public float _power;
+    private GameDatabase data;
     [SerializeField]
-    private float _life;
+    private float _power;
+    [SerializeField]
+    private int _life = 1;
+    private int x = 1;
 
     // Start is called before the first frame update
+
+    public float Power { get { return _power; } }
+    public float Life { get { return _life; } }
+
+    private void Awake()
+    {
+        data = GameObject.FindGameObjectWithTag("Database").GetComponent<GameDatabase>();
+    }
     void Start()
     {
         this.transform.localScale *= 2;
-        this._power = 1.7f;
-        this._life = 5;
+        _power = data.GetBallPower();
+        _life = data.GetBallLife();
     }
 
     private void Update()
@@ -30,7 +40,16 @@ public class BallCode : MonoBehaviour
         if(collision.gameObject.tag == "Obstacle")
         {
             this._life--;
-
         }
+    }
+
+    public void UpdateYourself(GameDatabase database)
+    {
+        x = 0;
+        Debug.Log(database.GetBallPower());
+        //databasele haberleş
+        this._power = database.GetBallPower();
+        this._life = database.GetBallLife();
+
     }
 }

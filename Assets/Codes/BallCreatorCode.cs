@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BallCreatorCode : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class BallCreatorCode : MonoBehaviour
     private float timer;
     private float randomForceMin = -100.0f;
     private float randomForceMax =  100.0f;
-    private float spawnRate = 2.0f;
     private loadingbar _lB;
 
     void Awake()
@@ -42,4 +42,5 @@ public class BallCreatorCode : MonoBehaviour
         Vector3 force = new Vector3(Random.Range(randomForceMin, randomForceMax), Random.Range(randomForceMin, randomForceMax), Random.Range(randomForceMin, randomForceMax));
         obj.GetComponent<Rigidbody>().AddForce(force);
     }
+
 }

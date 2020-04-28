@@ -9,11 +9,13 @@ public class SquareCode : MonoBehaviour
     /*public variables*/
     //...
 
+
     /*private variables*/
     private GameObject _obstacleContainer;
     [SerializeField]
     private TextMeshPro _lifeText;
 
+    private GameDatabase data;
     private float _health;
 
     private Player _player;
@@ -24,6 +26,7 @@ public class SquareCode : MonoBehaviour
         _lifeText = gameObject.GetComponentInChildren<TextMeshPro>();
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _obstacleContainer = GameObject.Find("ObstaclesContainer");
+        data = GameObject.Find("GameDatabase").GetComponent<GameDatabase>();
     }
 
     void Start()
@@ -31,6 +34,9 @@ public class SquareCode : MonoBehaviour
         _health = Random.Range(1, 5);
         _lifeText.text = _health.ToString();
         this.transform.parent = _obstacleContainer.transform;
+        _lifeText.transform.rotation = Quaternion.Euler(new Vector3(0,0,transform.rotation.z*-1));
+        _lifeText.transform.localPosition = new Vector3(0,0,-0.537f);
+
     }
 
     void Update()
@@ -48,10 +54,11 @@ public class SquareCode : MonoBehaviour
         {
             
             BallCode ballScript = collision.gameObject.GetComponent<BallCode>();
+            
+            data.UpgradeMoney(ballScript.Power);
 
-            _player.IncreaseMoney(ballScript._power);
-            if (_health > ballScript._power)
-                _health -= ballScript._power;
+            if (_health > ballScript.Power)
+                _health -= ballScript.Power;
             else
                 _health = 0;
 
@@ -64,7 +71,7 @@ public class SquareCode : MonoBehaviour
                 // ...
             }else
                 _lifeText.text = System.Math.Floor(_health).ToString();
-
+                
         }
     }
 

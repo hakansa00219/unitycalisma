@@ -16,7 +16,7 @@ public class SquareCreatorCode : MonoBehaviour
     /*Rows*/
     private float[] yArr = { 4, 2.5f, 1, -0.5f, -2};
     private int squareRowCnt;
-    
+
     private bool spawnCoroutineActive;
     private IEnumerator spawnCoroutine;
 
@@ -34,7 +34,20 @@ public class SquareCreatorCode : MonoBehaviour
         {
             for (int x = 0; x < squareColCnt; ++x)
             {
-                Instantiate(squarePrefab[Random.Range(0, squarePrefab.Length)], new Vector3(xArr[x], yArr[y], locT.position.z), Quaternion.identity);
+                int rnd = Random.Range(0, squarePrefab.Length);
+                if(rnd == 0)
+                {
+                    GameObject obj = Instantiate(squarePrefab[rnd],
+                    new Vector3(xArr[x], yArr[y], locT.position.z),
+                    Quaternion.Euler(new Vector3(0, 0, Random.Range(0,4)*90)));
+                } else
+                {
+                    GameObject obj = Instantiate(squarePrefab[rnd],
+                    new Vector3(xArr[x], yArr[y], locT.position.z),
+                    Quaternion.Euler(new Vector3(0, 0, Random.Range(0,2)*45)));
+                }
+                
+                
             }
         }
     }

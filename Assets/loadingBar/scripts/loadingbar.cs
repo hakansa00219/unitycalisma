@@ -7,7 +7,7 @@ public class loadingbar : MonoBehaviour {
 
     private RectTransform rectComponent;
     private Image imageComp;
-    public float speed = 0.0f;
+    private float speed = 0.01f;
 
     public bool filled = false;
 
@@ -40,5 +40,10 @@ public class loadingbar : MonoBehaviour {
             filled = true;
         }
 
+    }
+
+    public void ChangeSpawnRate(float spawnRate)
+    {
+        speed = spawnRate;
     }
 }
