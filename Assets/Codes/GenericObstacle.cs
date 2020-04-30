@@ -9,6 +9,8 @@ public class GenericObstacle : MonoBehaviour
     //*Private*\\
     [SerializeField]
     private TMPro.TextMeshPro _lifeText;
+    private Animator animator;
+    
 
     private GameDatabase data;
 
@@ -16,6 +18,7 @@ public class GenericObstacle : MonoBehaviour
     {
         _lifeText = gameObject.GetComponentInChildren<TMPro.TextMeshPro>();
         data = GameObject.Find("GameDatabase").GetComponent<GameDatabase>();
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -36,8 +39,12 @@ public class GenericObstacle : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "ball")
-        {
+        {            
 
+            if (animator.GetBool("PlayAnim")) 
+            {
+                animator.SetBool("PlayAnim", false);
+            } else { animator.SetBool("PlayAnim", true); }
             BallCode ballScript = collision.gameObject.GetComponent<BallCode>();
 
             data.UpgradeMoney(ballScript.Power);

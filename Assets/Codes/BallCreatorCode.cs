@@ -30,6 +30,9 @@ public class BallCreatorCode : MonoBehaviour
     void Update()
     {
         if (_lB.filled) BallSpawn();
+
+        if (Input.GetMouseButtonDown(0)) BallSpawn();
+
     }
 
     void BallSpawn()

@@ -22,7 +22,6 @@ public class BallCode : MonoBehaviour
     }
     void Start()
     {
-        this.transform.localScale *= 2;
         _power = data.GetBallPower();
         _life = data.GetBallLife();
     }
