@@ -64,8 +64,10 @@
   <ItemGroup>
     <Compile Include="Assets\Codes\BallCode.cs" />
     <Compile Include="Assets\Codes\BallCreatorCode.cs" />
+    <Compile Include="Assets\Codes\CameraControl.cs" />
     <Compile Include="Assets\Codes\GameController.cs" />
     <Compile Include="Assets\Codes\GameDatabase.cs" />
+    <Compile Include="Assets\Codes\GenericObstacle.cs" />
     <Compile Include="Assets\Codes\Player.cs" />
     <Compile Include="Assets\Codes\SquareCode.cs" />
     <Compile Include="Assets\Codes\SquareContainerCode.cs" />

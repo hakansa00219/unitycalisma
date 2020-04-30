@@ -5,8 +5,10 @@ using UnityEngine;
 public class SquareCreatorCode : MonoBehaviour
 {
     /*Public variables*/
-    public GameObject square;
+    public GameObject squareSpawnPoint;
+    public GameObject[] trianglesPrefab;
     public GameObject[] squarePrefab;
+
     
     /*Private variables*/
     private Transform locT;
@@ -16,38 +18,45 @@ public class SquareCreatorCode : MonoBehaviour
     /*Rows*/
     private float[] yArr = { 4, 2.5f, 1, -0.5f, -2};
     private int squareRowCnt;
-
+    private int rndTriSqu;
+    private int rndTriangles;
+    private int rndSquares;
     private bool spawnCoroutineActive;
     private IEnumerator spawnCoroutine;
-
+    private void Awake()
+    {
+        locT = squareSpawnPoint.GetComponent<Transform>();
+    }
     void Start()
     {
+        
         squareColCnt = xArr.Length;
         squareRowCnt = yArr.Length;
         spawnCoroutineActive = false;
         spawnCoroutine = SpawnNewSquare();
 
-        locT = square.GetComponent<Transform>();
+        
 
         /*Instantiate blocks*/
         for (int y = 0; y < squareRowCnt; ++y)
         {
             for (int x = 0; x < squareColCnt; ++x)
             {
-                int rnd = Random.Range(0, squarePrefab.Length);
-                if(rnd == 0)
+                rndTriSqu = Random.Range(0, 2);
+                rndTriangles = Random.Range(0, 4);
+                rndSquares = Random.Range(0, 2);
+                if(rndTriSqu == 0)
                 {
-                    GameObject obj = Instantiate(squarePrefab[rnd],
+                    Instantiate(trianglesPrefab[rndTriangles],
                     new Vector3(xArr[x], yArr[y], locT.position.z),
-                    Quaternion.Euler(new Vector3(0, 0, Random.Range(0,4)*90)));
-                } else
+                    trianglesPrefab[rndTriangles].transform.rotation);
+
+                } else if(rndTriSqu == 1)
                 {
-                    GameObject obj = Instantiate(squarePrefab[rnd],
+                    Instantiate(squarePrefab[rndSquares],
                     new Vector3(xArr[x], yArr[y], locT.position.z),
-                    Quaternion.Euler(new Vector3(0, 0, Random.Range(0,2)*45)));
-                }
-                
-                
+                    squarePrefab[rndSquares].transform.rotation);
+                }                           
             }
         }
     }
@@ -83,9 +92,21 @@ public class SquareCreatorCode : MonoBehaviour
         {
             yield return new WaitForSeconds(2);
             /*Spawn on random point*/
-            Instantiate(squarePrefab[Random.Range(0, squarePrefab.Length)],
-                new Vector3(xArr[Random.Range(0, squareColCnt)], yArr[Random.Range(0, squareRowCnt)],
-                locT.position.z), Quaternion.identity);
+            rndTriSqu = Random.Range(0, 2);
+            rndTriangles = Random.Range(0, 4);
+            rndSquares = Random.Range(0, 2);
+            if (rndTriSqu == 0)
+            {
+                Instantiate(trianglesPrefab[rndTriangles],
+                new Vector3(xArr[Random.Range(0, squareColCnt)], yArr[Random.Range(0, squareRowCnt)],locT.position.z),
+                trianglesPrefab[rndTriangles].transform.rotation);
+            } else if (rndTriSqu == 1)
+            {
+                Instantiate(squarePrefab[rndSquares],
+                new Vector3(xArr[Random.Range(0, squareColCnt)], yArr[Random.Range(0, squareRowCnt)],locT.position.z),
+                squarePrefab[rndSquares].transform.rotation);
+            }
+            
 
             Debug.Log("Spawned.!!!!!!!!!");
             Debug.Log("Count: " + SquareContainerCode.squareCnt);

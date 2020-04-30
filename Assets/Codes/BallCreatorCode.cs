@@ -18,6 +18,8 @@ public class BallCreatorCode : MonoBehaviour
     private float randomForceMax =  100.0f;
     private loadingbar _lB;
 
+    private int spawnCount = 1;
+
     void Awake()
     {
         locT = loc.GetComponent<Transform>();
@@ -37,10 +39,19 @@ public class BallCreatorCode : MonoBehaviour
         /*Random x point*/
         float randX = Random.Range(-3f, 3f);
         /*Instantiate ball*/
-        GameObject obj = Instantiate(spherePrefab[x / 100], new Vector3(randX, locT.position.y, locT.position.z), Quaternion.identity);
-        /*Spawn with force to random direction*/
-        Vector3 force = new Vector3(Random.Range(randomForceMin, randomForceMax), Random.Range(randomForceMin, randomForceMax), Random.Range(randomForceMin, randomForceMax));
-        obj.GetComponent<Rigidbody>().AddForce(force);
+        for(int i = 0; i < spawnCount; i++)
+        {
+            GameObject obj = Instantiate(spherePrefab[x / 100], new Vector3(randX, locT.position.y, locT.position.z), Quaternion.identity);
+            /*Spawn with force to random direction*/
+            Vector3 force = new Vector3(Random.Range(randomForceMin, randomForceMax), Random.Range(randomForceMin, randomForceMax), Random.Range(randomForceMin, randomForceMax));
+            obj.GetComponent<Rigidbody>().AddForce(force);
+        }
+        
+    }
+
+    public void UpgradeSpawnCount()
+    {
+        spawnCount += 1;
     }
 
 }

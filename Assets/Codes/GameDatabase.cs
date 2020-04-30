@@ -52,15 +52,15 @@ public class GameDatabase : MonoBehaviour
 
     void InitializeSpawnerInfo()
     {
-        _spawnRate = 0.5f;
+        _spawnRate = 0.01f;
         _ballSpawnCount = 1;
     }
 
     /*Setters*/
-    public void UpgradeBallPower(){ _ballPower += 1.0f; }
-    public void UpgradeBallLife() { _ballLife += 1; }
-    public void UpgradeSpawnRate() { _spawnRate += 0.01f; }
-    public void UpgradeBallSpawnCount() { _ballSpawnCount += 1; }
+    public void UpgradeBallPower(){ _ballPower += 1.0f; _money -= 10f; }
+    public void UpgradeBallLife() { _ballLife += 1; _money -= 10f; }
+    public void UpgradeSpawnRate() { _spawnRate += 0.01f; _money -= 5f; }
+    public void UpgradeBallSpawnCount() { _ballSpawnCount += 1; _money -= 500f; }
     public void UpgradeMoney(float money) { _money += money; }
     /*Getters*/
     public float GetBallPower() { return _ballPower; }
