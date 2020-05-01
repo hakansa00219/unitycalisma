@@ -23,7 +23,7 @@ public class CameraControl : MonoBehaviour
                                            Input.GetAxisRaw("Mouse Y") * Time.deltaTime * mouseSpeed,
                                            0);
                 // Camera Limitations
-                transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -25f, 8f), transform.position.z);
+                transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -35f, 8f), transform.position.z);
             }
             else if (Input.GetAxis("Mouse X") < 0)
             {
@@ -32,7 +32,7 @@ public class CameraControl : MonoBehaviour
                                            Input.GetAxisRaw("Mouse Y") * Time.deltaTime * mouseSpeed,
                                            0);
                 // Camera Limitations
-                transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -25f, 8f), transform.position.z);
+                transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -35f, 8f), transform.position.z);
             }
         }
         
